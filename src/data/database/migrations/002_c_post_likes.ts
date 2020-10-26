@@ -8,7 +8,7 @@ export async function up(knex: Knex) {
     table.boolean('like').notNullable();
 
     table.foreign('user_id').references('id').inTable('users');
-    table.foreign('post_id').references('is').inTable('posts');
+    table.foreign('post_id').references('id').inTable('posts');
 
     table.timestamps(true, true);
   });
