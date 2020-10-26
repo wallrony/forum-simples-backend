@@ -4,7 +4,7 @@ Autor: Wallisson Rony de M. N.
 
 Este é um repositório voltado à construção de um fórum simples. Nesse está o backend do projeto.
 
-## Em breve irei inserir a descrição de rotas e objetos utilizados no projeto a fim de apresentar uma descrição e apresentação mais sólida após testes e correção de bugs.
+## Em breve irei inserir a descrição de rotas e objetos utilizados no projeto a fim de apresentar uma descrição e apresentação mais sólidas após testes e correção de bugs.
 
 ## Pacotes Presentes neste Repositório.
 
