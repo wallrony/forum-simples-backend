@@ -1,10 +1,10 @@
 {
-  "name": "name",
+  "name": "simple-forum",
   "version": "1.0.0",
-  "description": "description app",
+  "description": "Um fórum simples para postagens e usuários sem autenticação.",
   "main": "index.ts",
-  "repository": "https://github.com/wallrony/nodejs-backend-template.git",
-  "author": "author",
+  "repository": "https://github.com/wallrony/forum-simples-backend.git",
+  "author": "Wallisson Rony",
   "license": "MIT",
   "scripts": {
     "start": "ts-node --transpile-only index.ts",
