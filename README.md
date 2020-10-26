@@ -11,6 +11,7 @@ Este é um repositório voltado à construção de um fórum simples. Nesse est�
  - ts-node
  - ts-node-dev
  - express
+ - cors
  - dotenv-safe
  - knex *
  - pg *
