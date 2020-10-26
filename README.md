@@ -1,20 +1,19 @@
-# NodeJS Backend Template
+# Fórum Simples - Backend
 
 Autor: Wallisson Rony de M. N.
 
-Este é um repositório que contém arquivos que eu normalmente utilizo para construção de backends com NodeJS, Knex e Typescript. Esse também foi configurado como um template e disponibilizado como público. Utilize o quanto quiser :D.
+Este é um repositório voltado à construção de um fórum simples. Nesse está o backend do projeto.
+
+## Em breve irei inserir a descrição de rotas e objetos utilizados no projeto a fim de apresentar uma descrição e apresentação mais sólida após testes e correção de bugs.
 
 ## Pacotes Presentes neste Repositório.
 
  - ts-node
  - ts-node-dev
  - express
- - cors
- - crypto
  - dotenv-safe
  - knex *
  - pg *
- - jsonwebtoken
  - typescript
 
 *: pacotes que têm um * na frente indicam versionamento específico por causarem problemas em versões mais recentes ou informações mais detalhadas a serem explicadas a seguir.
