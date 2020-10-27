@@ -26,7 +26,8 @@ export default {
       const userExists = await connection('users')
         .select('id')
         .where('username', '=', user.username)
-        .returning('id');
+        .returning('id')
+        .first();
       
       if(userExists) {
         return response.status(400).json({
@@ -34,15 +35,18 @@ export default {
         });
       }
 
-      const result = await connection('users').insert(user).returning('id');
+      const result = await connection('users')
+        .insert(user)
+        .returning('*');
 
-      if(result) {
-        return response.status(201).json(result);
+      if(result[0]) {
+        return response.status(201).json(result[0]);
       }
       
       throw('add-not-realized');
     }
     catch(error) {
+      console.log(error);
       return response.status(500).json({error});
     }
   },
@@ -51,20 +55,23 @@ export default {
 
     if(!user_id) {
       return response.status(400).json({
-        message: 'need user_id param'
+        message: 'need req params'
       });
     }
 
     try {
       const result = await connection('users')
         .select('*')
-        .where('id', '=', user_id);
+        .where('id', '=', user_id)
+        .first();
 
       if(result) {
         return response.json(result);
       }
 
-      throw('show-not-realized');
+      return response.status(404).json({
+        message: 'not found'
+      });
     }
     catch(error) {
       return response.status(500).json({error});
@@ -75,7 +82,7 @@ export default {
 
     if(!user_id) {
       return response.status(400).json({
-        message: 'need user_id param'
+        message: 'need req params'
       });
     }
 
@@ -93,28 +100,37 @@ export default {
     const user: User = request.body;
 
     try {
-      const userExists = await connection('users')
-        .select('id')
-        .where('username', '=', user.username)
-        .returning('id');
-      
-      if(userExists) {
-        return response.status(400).json({
-          message: 'username already in use'
-        });
+      if(request.body['username']) {
+        const userExists = await connection('users')
+          .select('id')
+          .where('username', '=', user.username)
+          .returning('id')
+          .first();
+        
+        if(userExists) {
+          return response.status(400).json({
+            message: 'username already in use'
+          });
+        }
       }
       
       const result = await connection('users')
         .update(user)
         .where('id', '=', user_id);
 
-      if(result) {
-        return response.json(result);
+      if(result > 0) {
+        return response.send();
+      }
+      else if(result == 0) {
+        return response.status(404).json({
+          message: 'not found'
+        });
       }
 
       throw('update-not-realized');
     }
     catch(error) {
+      console.log(error)
       return response.status(500).json({error});
     }
   },
@@ -123,7 +139,7 @@ export default {
 
     if(!user_id) {
       return response.status(400).json({
-        message: 'need user_id param'
+        message: 'need req params'
       });
     }
 
@@ -135,8 +151,13 @@ export default {
       if(result) {
         return response.status(204).send();
       }
+      else if(result === 0) {
+        return response.status(404).json({
+          message: 'not found'
+        });
+      }
 
-      throw('delete-not-realized');
+      throw('update-not-realized');
     }
     catch(error) {
       return response.status(500).json({error});
