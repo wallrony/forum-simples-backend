@@ -11,7 +11,7 @@ A estrutura do projeto se baseia em um simples fórum que terá usuários com so
 
 Usuário: objeto para armazenar informações necessárias do usuário.
 
-|: Atributo :|: Tipo   :|: Descrição                                                                                                                           |
+| Atributo   | Tipo     | Descrição                                                                                                                            |
 |------------|----------|--------------------------------------------------------------------------------------------------------------------------------------|
 | id         | integer  | Número identificador do usuário.                                                                                                     |
 | username   | string   | Nome de usuário. Único atributo necessário para entrar, postar e reagir à postagens. Esse não ficará disponível aos outros usuários. |
@@ -19,7 +19,7 @@ Usuário: objeto para armazenar informações necessárias do usuário.
 
 Postagem: objeto para armazenar informações sobre as postagens do fórum.
 
-|: Atributo :|: Tipo   :|: Descrição                                         |
+| Atributo   | Tipo     | Descrição                                          |
 |------------|----------|----------------------------------------------------|
 | id         | integer  | Número identificador da postagem.                  |
 | user_id    | integer  | Número identificador do usuário dono da postagem.  |
@@ -30,7 +30,7 @@ Postagem: objeto para armazenar informações sobre as postagens do fórum.
 
 Like da postagem: objeto para identificar qual usuário reagiu à postagem.
 
-|: Atributo :|: Tipo   :|: Descrição                                             |
+| Atributo   | Tipo     | Descrição                                              |
 |------------|----------|--------------------------------------------------------|
 | post_id    | integer  | Número identificador da postagem.                      |
 | user_id    | integer  | Número identificador do usuário que reagiu à postagem. |
