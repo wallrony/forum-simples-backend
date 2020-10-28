@@ -3,8 +3,47 @@
 Autor: Wallisson Rony de M. N.
 
 Este é um repositório voltado à construção de um fórum simples. Nesse está o backend do projeto.
+Junto dos arquivos do projeto há um arquivo .json que pode ser importado no software Insomnia para adição de um workspace com todas as rotas da aplicação.
 
-## Em breve irei inserir a descrição de rotas e objetos utilizados no projeto a fim de apresentar uma descrição e apresentação mais sólidas após testes e correção de bugs.
+## Estrutura
+
+A estrutura do projeto se baseia em um simples fórum que terá usuários com somente nomes de usuário e seus nomes (name e username) que poderão publicar postagens com título e conteúdo e poder também gostar e desgostar (like e unlike) cada postagem, não contendo nenhuma restrição ou filtro de visualização de postagens. Logo, a estrutura de cada objeto se baseia nas seguintes tabelas:
+
+Usuário: objeto para armazenar informações necessárias do usuário.
+
+|: Atributo :|: Tipo   :|: Descrição                                                                                                                           |
+| id         | integer  | Número identificador do usuário.                                                                                                     |
+| username   | string   | Nome de usuário. Único atributo necessário para entrar, postar e reagir à postagens. Esse não ficará disponível aos outros usuários. |
+| name       | string   | Nome do usuário. Esse nome ficará disponível aos outros usuários.                                                                    |
+
+Postagem: objeto para armazenar informações sobre as postagens do fórum.
+
+|: Atributo :|: Tipo   :|: Descrição                                         |
+| id         | integer  | Número identificador da postagem.                  |
+| user_id    | integer  | Número identificador do usuário dono da postagem.  |
+| title      | string   | Título da postagem.                                |
+| content    | text     | Conteúdo da postagem.                              |
+| likes      | integer  | Quantidade de likes da postagem.                   |
+| unlikes    | integer  | Quantidade de unlikes da postagem.                 |
+
+Like da postagem: objeto para identificar qual usuário reagiu à postagem.
+
+|: Atributo :|: Tipo   :|: Descrição                                             |
+| post_id    | integer  | Número identificador da postagem.                      |
+| user_id    | integer  | Número identificador do usuário que reagiu à postagem. |
+| liked      | boolean  | Reação à postagem.                                     |
+
+## User Stories
+
+A construção do projeto foi realizada considerando as seguintes histórias de usuário:
+
+<ul>
+ <li>O usuário tem que entrar no fórum;</li>
+ <li>O usuário tem que poder adicionar postagens com título e conteúdo;</li>
+ <li>O usuário pode reagir às postagens do fórum;</li>
+ <li>O usuário pode editar suas informações;</li>
+ <li>O usuário pode editar as informações das postagens adicionadas por ele.</li>
+</ul>
 
 ## Pacotes Presentes neste Repositório.
 
@@ -19,7 +58,7 @@ Este é um repositório voltado à construção de um fórum simples. Nesse est�
 
 *: pacotes que têm um * na frente indicam versionamento específico por causarem problemas em versões mais recentes ou informações mais detalhadas a serem explicadas a seguir.
 
-pg *: após pesquisas, descobri que existe um erro com o pacote pg (postgresql) na versão mais atual até então (10/10/2020) na utilização do SSL. Como utilizo ferramentas de teste como o heroku, que necessita de SSL para conexão com banco de dados, resolvi instalar uma versão mais estável do pg para funcionamento do backend. Por isso, ao utilizar operações com o pg no seu projeto, você poderá ver mensagens que depreciação na utilização do SSL, porém, isso não impacta no desenvolvimento e na experiência de utilização do seu backend ou banco de dados.
+pg *: após pesquisas, descobri que existe um erro com o pacote pg (postgresql) na versão mais atual até então (10/10/2020) na utilização do SSL. Como utilizo ferramentas de teste como o heroku, que necessita de SSL para conexão com banco de dados, resolvi instalar uma versão mais estável do pg para funcionamento do backend. Por isso, ao utilizar operações com o pg no seu projeto, você poderá ver mensagens de depreciação na utilização do SSL, porém, isso não impacta no desenvolvimento e na experiência de utilização no seu backend ou banco de dados.
 
 knex *: por padrão, nesse projeto, foi inserida a configuração de client do knex para utilizar PostgreSQL. Então, basta inserir as credenciais apresentadas no arquivo 'knexfile.ts' em um arquivo .env.
 
