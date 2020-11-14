@@ -1,4 +1,5 @@
 import express from 'express';
+import AuthController from '../data/controllers/AuthController';
 
 import UsersController from '../data/controllers/UsersController';
 
@@ -10,5 +11,6 @@ accountsRouter.route('/users/:user_id')
   .delete(UsersController.delete)
 
 accountsRouter.post('/register', UsersController.add);
+accountsRouter.post('/login', AuthController.login);
 
 export default accountsRouter;

@@ -11,7 +11,7 @@ export default {
   async index(request: Request, response: Response) {
     try {
       const result = await connection('posts')
-        .select('id', 'title', 'likes', 'unlikes')
+        .select('id', 'title', 'content', 'user_id', 'likes', 'unlikes')
 
       if(result) {
         return response.json(result);
